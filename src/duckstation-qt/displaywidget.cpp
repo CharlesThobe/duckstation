@@ -225,12 +225,14 @@ bool DisplayWidget::event(QEvent* event)
         // Don't forward backspace characters. We send the backspace as a normal key event,
         // so if we send the character too, it double-deletes.
         QString text(key_event->text());
-        text.remove(QChar('\b'));
+        //text.remove(QChar('\b'));
+        printf("%X\n", *(text.toLocal8Bit().data()));
         if (!text.isEmpty())
           emit windowTextEntered(text);
       }
-
-      if (key_event->isAutoRepeat())
+      return true;
+    } // Added
+      /*if (key_event->isAutoRepeat())
         return true;
 
       // For some reason, Windows sends "fake" key events.
@@ -259,7 +261,7 @@ bool DisplayWidget::event(QEvent* event)
 
       emit windowKeyEvent(key, pressed);
       return true;
-    }
+    }*/
 
     case QEvent::MouseMove:
     {

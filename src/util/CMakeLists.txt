@@ -185,6 +185,7 @@ if(ENABLE_SDL2)
     sdl_audio_stream.cpp
     sdl_input_source.cpp
     sdl_input_source.h
+    sdl_keyboard_mouse.cpp
   )
   target_compile_definitions(util PUBLIC "ENABLE_SDL2=1")
   target_link_libraries(util PUBLIC SDL2::SDL2)
